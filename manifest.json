@@ -1,0 +1,80 @@
+{
+  "id": "plugin-web-request-okta",
+  "displayName": "Web Request Okta",
+  "description": "Plugin for sending a web request on a change to a Golden Record using an Okta token generated from client credentials.",
+  "apiVersion": "2",
+  "versionDescription": "Version 2",
+  "version": "1.0.0",
+  "iconFile": "icon.png",
+  "executable": "PluginWebRequestOkta",
+  "kind": "publisher",
+  "os": "$GOOS",
+  "arch": "$GOARCH",
+  "accessGroups": [],
+  "canConfigure": true,
+  "canProduceMultipleSchemas": true,
+  "canAcceptQueryBasedSchemas": false,
+  "canUseOAuth": false,
+  "canConfigureWrite": true,
+  "canWrite": true,
+  "configSchema": {
+    "ui": {
+      "ui:order": [
+        "TokenUrl",
+        "ClientId",
+        "ClientSecret",
+        "RequestBody"
+      ],
+      "ClientSecret":{
+        "ui:widget": "password"
+      },
+      "RequestBody": {
+        "ui:order": [
+          "Key",
+          "Value"
+        ]
+      }
+    },
+    "schema": {
+      "type": "object",
+      "properties": {
+        "TokenUrl": {
+          "type": "string",
+          "title": "Token URL",
+          "description": "URL of the token endpoint."
+        },
+        "ClientId": {
+          "type": "string",
+          "title": "Client Id",
+          "description": "Client Id of the token authentication request."
+        },
+        "ClientSecret": {
+          "type": "string",
+          "title": "Client Secret",
+          "description": "Client Secret of the token authentication request."
+        },
+        "RequestBody": {
+          "type": "array",
+          "title": "Request Body",
+          "description": "Form URL encoded key value pairs to send as the token request body (grant_type: client_credentials is included by default).",
+          "items": {
+            "type": "object",
+            "properties": {
+              "Key": {
+                "type": "string",
+                "title": "Key",
+                "description": "Key of the key value pair."
+              },
+              "Value": {
+                "type": "string",
+                "title": "Value",
+                "description": "Value of the key value pair."
+              }
+            }
+          }
+        }
+      },
+      "required": ["TokenUrl", "ClientId", "ClientSecret"]
+    }
+  }
+}
