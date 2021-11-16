@@ -68,8 +68,12 @@ namespace PluginWebRequestOkta.API.Factory
                 new AuthenticationHeaderValue("Basic", base64EncodedAuthenticationString);
 
             var response = await Client.SendAsync(request);
-            response.EnsureSuccessStatusCode();
-                    
+            if (!response.IsSuccessStatusCode)
+            {
+                var error = JsonConvert.DeserializeObject<ApiError>(await response.Content.ReadAsStringAsync());
+                throw new Exception($"{error.Error}: {error.ErrorDescription}");
+            }
+
             var content = JsonConvert.DeserializeObject<TokenResponse>(await response.Content.ReadAsStringAsync());
                     
             // update expiration and saved token

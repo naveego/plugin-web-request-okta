@@ -4,10 +4,10 @@ namespace PluginWebRequestOkta.DataContracts
 {
     public class ApiError
     {
-        [JsonProperty("status")]
-        public string Status { get; set; }
+        [JsonProperty("error")]
+        public string Error { get; set; }
         
-        [JsonProperty("message")]
-        public string Message { get; set; }
+        [JsonProperty("error_description")]
+        public string ErrorDescription { get; set; }
     }
 }

@@ -23,7 +23,11 @@ namespace PluginWebRequestOktaTest.Plugin
                 TokenUrl = "",
                 RequestBody = new List<RequestBodyKeyValue>
                 {
-                    
+                    new RequestBodyKeyValue
+                    {
+                        Key = "scope",
+                        Value = ""
+                    }
                 }
             };
         }
