@@ -134,7 +134,12 @@ namespace PluginWebRequestOkta.API.Write
                 
                 if (!response.IsSuccessStatusCode)
                 {
-                    ack.Error = await response.Content.ReadAsStringAsync();
+                    var ackErrorResponse = new WritebackAckError
+                    {
+                        ApiResponse = await response.Content.ReadAsStringAsync(),
+                        RequestBody = safeBody
+                    };
+                    ack.Error = JsonConvert.SerializeObject(ackErrorResponse, Formatting.Indented);
                 }
                 
                 await responseStream.WriteAsync(ack);
