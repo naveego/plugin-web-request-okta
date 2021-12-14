@@ -102,7 +102,7 @@ namespace PluginWebRequestOkta.API.Write
                 safeBody = safeBody.Replace(Constants.OktaTokenFind, token);
                 
                 var body = string.Format(safeBody, bodyValues.ToArray());
-                var json = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8,
+                var json = new StringContent(body, Encoding.UTF8,
                     "application/json");
                 
                 HttpResponseMessage response = new HttpResponseMessage();
@@ -137,7 +137,7 @@ namespace PluginWebRequestOkta.API.Write
                     var ackErrorResponse = new WritebackAckError
                     {
                         ApiResponse = await response.Content.ReadAsStringAsync(),
-                        RequestBody = safeBody
+                        RequestBody = body
                     };
                     ack.Error = JsonConvert.SerializeObject(ackErrorResponse, Formatting.Indented);
                 }
