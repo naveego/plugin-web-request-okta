@@ -33,7 +33,7 @@ namespace PluginWebRequestOkta.API.Write
                     Id = $"{Constants.UrlPropertyPrefix}_{match}",
                     Name = $"{Constants.UrlPropertyPrefix}_{match}",
                     Description = "",
-                    Type = PropertyType.String,
+                    Type = PropertyType.Text,
                     TypeAtSource = "",
                 };
             
@@ -47,7 +47,7 @@ namespace PluginWebRequestOkta.API.Write
                     Id = $"{Constants.BodyPropertyPrefix}_{match}",
                     Name = $"{Constants.BodyPropertyPrefix}_{match}",
                     Description = "",
-                    Type = PropertyType.String,
+                    Type = PropertyType.Text,
                     TypeAtSource = "",
                 };
             

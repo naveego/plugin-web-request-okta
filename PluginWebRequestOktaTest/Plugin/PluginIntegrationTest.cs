@@ -322,7 +322,7 @@ namespace PluginWebRequestOktaTest.Plugin
             Assert.Equal("URL_{0}", property.Id);
             Assert.Equal("URL_{0}", property.Name);
             Assert.Equal("", property.Description);
-            Assert.Equal(PropertyType.String, property.Type);
+            Assert.Equal(PropertyType.Text, property.Type);
             
             //cleanup
             await channel.ShutdownAsync();
