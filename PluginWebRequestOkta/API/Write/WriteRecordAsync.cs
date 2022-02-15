@@ -151,12 +151,12 @@ namespace PluginWebRequestOkta.API.Write
             }
             catch (Exception e)
             {
-                Logger.Error(e, $"Error writing record {e.Message}");
+                Logger.Error(e, $"Error writing record {e.Message}: {e.InnerException}");
                 // send ack
                 var ack = new RecordAck
                 {
                     CorrelationId = record.CorrelationId,
-                    Error = e.Message
+                    Error = $"Error writing record {e.Message}: {e.InnerException}"
                 };
                 await responseStream.WriteAsync(ack);
 
