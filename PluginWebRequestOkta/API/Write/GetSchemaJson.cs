@@ -34,6 +34,12 @@ namespace PluginWebRequestOkta.API.Write
                     ""title"": ""Url"",
                     ""description"": ""The url of the request, supports .NET format strings (ex. `https://{{0}}.com`), supports Okta token injection (ex. `https://aunalytics.com?token={Constants.OktaTokenFind}`)""
                 }},
+                ""SerializeBody"": {{
+                    ""type"": ""boolean"",
+                    ""title"": ""Serialize Body"",
+                    ""description"": ""Should the body be serialized?"",
+                    ""default"": false
+                }},
                 ""Body"": {{
                     ""type"": ""string"",
                     ""title"": ""Body"",

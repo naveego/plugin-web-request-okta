@@ -12,6 +12,7 @@ namespace PluginWebRequestOkta.API.Write
                     ""Name"",
                     ""Method"",
                     ""Url"",
+                    ""SerializeBody"",
                     ""Body"",
                     ""Headers""
                 ],

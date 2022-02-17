@@ -101,7 +101,7 @@ namespace PluginWebRequestOkta.API.Write
                 // apply okta token
                 safeBody = safeBody.Replace(Constants.OktaTokenFind, token);
                 
-                var body = string.Format(safeBody, bodyValues.ToArray());
+                var body = settings.SerializeBody ? JsonConvert.SerializeObject(string.Format(safeBody, bodyValues.ToArray())) : string.Format(safeBody, bodyValues.ToArray());
                 var json = new StringContent(body, Encoding.UTF8,
                     "application/json");
                 
